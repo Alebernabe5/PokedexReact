@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { BASE_URL } from "../constants/url";
-import { PokemonData } from "../interfaces/pokemonData";
+import { PokemonData } from "../interfaces/PokemonData";
 
 export const useGetPokemon = (pokemonName?: string, pokemonId?: number) => {
     const { data: pokemonData, isLoading, error } =useQuery<PokemonData>({
