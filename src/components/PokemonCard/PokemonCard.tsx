@@ -4,6 +4,7 @@ import { PokemonListItem } from "../../interfaces/PokemonListItem";
 import { getMainPokemonType } from "../../utils/getMainPokemonType";
 import { Label } from "../shared/Label/Label";
 import { capitilizeFirstLetter } from "../../utils/capitilizeFirstLetter";
+import { FavoriteButton } from "../shared/Button/FavoriteButton";
 
 interface PokemonCardProps {
   pokemon?: PokemonListItem;
@@ -15,7 +16,8 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, pokemonId }) 
   const mainType = useMemo(() => pokemonData && getMainPokemonType(pokemonData), [pokemonData])
 
   return (
-    <div className={`${mainType}-background w-56 h-56 rounded-lg shadow-lg p-4`}>
+    <div className={`${mainType}-background relative w-56 h-56 rounded-lg shadow-lg p-4`}>
+      <FavoriteButton pokemonId={pokemonData?.id ?? 0} />
       <div className="flex flex-col items-center mx-auto">
         <Label>{pokemonData?.name ? capitilizeFirstLetter (pokemonData?.name) : ''}</Label>
         <img
